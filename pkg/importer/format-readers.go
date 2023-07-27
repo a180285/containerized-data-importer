@@ -17,6 +17,7 @@ limitations under the License.
 package importer
 
 import (
+	"archive/tar"
 	"bytes"
 	"compress/gzip"
 	"encoding/hex"
@@ -206,6 +207,17 @@ func (fr *FormatReaders) gzReader() (io.ReadCloser, error) {
 	}
 	klog.V(2).Infof("gzip: extracting %q\n", gz.Name)
 	return gz, nil
+}
+
+func (fr *FormatReaders) tarReader() (io.ReadCloser, error) {
+	tr := tar.NewReader(fr.TopReader())
+
+	hdr, err := tr.Next() // advance cursor to 1st (and only) file in tarball
+	if err != nil {
+		return nil, errors.Wrap(err, "could not read tar header")
+	}
+	klog.V(2).Infof("tar: extracting %q\n", hdr.Name)
+	return io.NopCloser(tr), nil
 }
 
 // Return the size of the endpoint "through the eye" of the previous reader. Note: there is no
