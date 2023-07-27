@@ -162,6 +162,11 @@ func (fr *FormatReaders) fileFormatSelector(hdr *image.Header) {
 	var err error
 	fFmt := hdr.Format
 	switch fFmt {
+	case "tar":
+		r, err = fr.tarReader()
+		if err == nil {
+			fr.Archived = true
+		}
 	case "gz":
 		r, err = fr.gzReader()
 		if err == nil {
