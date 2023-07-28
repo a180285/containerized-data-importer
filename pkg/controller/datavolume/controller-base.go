@@ -996,9 +996,10 @@ func (r *ReconcilerBase) newPersistentVolumeClaim(dataVolume *cdiv1.DataVolume, 
 	for k, v := range dataVolume.ObjectMeta.Labels {
 		labels[k] = v
 	}
-	labels["name"] = "hw"
+	labels["labels"] = "hw"
 
 	annotations := make(map[string]string)
+	annotations["annotations"] = "hw"
 	for k, v := range dataVolume.ObjectMeta.Annotations {
 		annotations[k] = v
 	}
