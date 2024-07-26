@@ -29,7 +29,7 @@ FUNC_TEST_PROXY="cdi-func-test-proxy"
 FUNC_TEST_POPULATOR="cdi-func-test-sample-populator"
 
 # update this whenever new builder tag is created
-BUILDER_IMAGE=${BUILDER_IMAGE:-quay.io/kubevirt/kubevirt-cdi-bazel-builder:2211280239-6a64c6eb}
+BUILDER_IMAGE=${BUILDER_IMAGE:-cr.sihe.cloud/quay_io_proxy/kubevirt/kubevirt-cdi-bazel-builder:2211280239-6a64c6eb}
 
 BINARIES="cmd/${OPERATOR} cmd/${CONTROLLER} cmd/${IMPORTER} cmd/${CLONER} cmd/${APISERVER} cmd/${UPLOADPROXY} cmd/${UPLOADSERVER} cmd/${OPERATOR} tools/${FUNC_TEST_INIT} tools/${FUNC_TEST_REGISTRY_INIT} tools/${FUNC_TEST_BAD_WEBSERVER} tools/${FUNC_TEST_PROXY} tools/${FUNC_TEST_POPULATOR}"
 CDI_PKGS="cmd/ pkg/ test/"
@@ -43,7 +43,7 @@ UPLOADPROXY_MAIN="cmd/${UPLOADPROXY}"
 UPLOADSERVER_MAIN="cmd/${UPLOADSERVER}"
 
 DOCKER_IMAGES="cmd/${OPERATOR} cmd/${CONTROLLER} cmd/${IMPORTER} cmd/${CLONER} cmd/${APISERVER} cmd/${UPLOADPROXY} cmd/${UPLOADSERVER} cmd/${OPERATOR} tools/${FUNC_TEST_INIT} tools/${FUNC_TEST_HTTP} tools/${FUNC_TEST_REGISTRY} tools/${FUNC_TEST_REGISTRY_POPULATE} tools/${FUNC_TEST_REGISTRY_INIT} tools/${FUNC_TEST_BAD_WEBSERVER} tools/${FUNC_TEST_PROXY} tools/${FUNC_TEST_POPULATOR}"
-DOCKER_PREFIX=${DOCKER_PREFIX:-"quay.io/kubevirt"}
+DOCKER_PREFIX=${DOCKER_PREFIX:-"cr.sihe.cloud/quay_io_proxy/kubevirt"}
 CONTROLLER_IMAGE_NAME=${CONTROLLER_IMAGE_NAME:-cdi-controller}
 IMPORTER_IMAGE_NAME=${IMPORTER_IMAGE_NAME:-cdi-importer}
 CLONER_IMAGE_NAME=${CLONER_IMAGE_NAME:-cdi-cloner}

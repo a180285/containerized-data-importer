@@ -1,4 +1,4 @@
-FROM quay.io/kubevirt/kubevirt-cdi-bazel-builder:2203231247-92ab271e AS builder
+FROM cr.sihe.cloud/quay_io_proxy/kubevirt/kubevirt-cdi-bazel-builder:2203231247-92ab271e AS builder
 WORKDIR /go/src/github.com/kubevirt.io/containerized-data-importer
 COPY . .
 

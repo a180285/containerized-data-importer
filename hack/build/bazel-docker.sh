@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ex
+
 #Copyright 2018 The CDI Authors.
 #
 #Licensed under the Apache License, Version 2.0 (the "License");
@@ -128,7 +130,7 @@ fi
 echo "Starting bazel server"
 # Run the command
 test -t 1 && USE_TTY="-it"
-${CDI_CRI} exec ${USE_TTY} ${BAZEL_BUILDER_SERVER} /entrypoint-bazel.sh "$@"
+${CDI_CRI} exec ${USE_TTY} -e HTTP_PROXY=$HTTP_PROXY -e NO_PROXY=$NO_PROXY -e HTTPS_PROXY=$HTTPS_PROXY ${BAZEL_BUILDER_SERVER} /entrypoint-bazel.sh "$@"
 
 # Copy the whole containerized-data-importer data out to get generated sources and formatting changes
 _rsync \
